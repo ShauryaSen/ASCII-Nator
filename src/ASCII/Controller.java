@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,11 +38,12 @@ public class Controller implements Initializable {
         URL url = new URL(urlField.getText());
 
         //Open URL in browser
-        /*
+
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             Desktop.getDesktop().browse(new URI(""+url));
         }
-         */
+
+        System.out.println(String.valueOf(url));
 
         // create the file to output to
         Writer writer = new FileWriter("asciiArt.txt");
@@ -51,12 +53,20 @@ public class Controller implements Initializable {
 
             image = ImageIO.read(url);
 
-            ImageIO.write(image, "jpg",new File("hi.jpg"));
-
             image = ImageIO.read(new File(String.valueOf(url)));
 
+            // If last 3 characters in url = "png", do line 56 with png instead of jpg
+            String typeChecker = String.valueOf(url).substring(String.valueOf(url).length() - 3);
+            if (typeChecker == "png") {
+                ImageIO.write(image, "png",new File("Original.png"));
+            } else if (typeChecker == "jpg") {
+                ImageIO.write(image, "jpg",new File("Original.jpg"));
+            }
+
         } catch (IOException fx) {
-        } catch (NullPointerException npx) {
+
+        }
+        catch (NullPointerException npx) {
             System.out.println("NullPointerException thrown");
         }
 
