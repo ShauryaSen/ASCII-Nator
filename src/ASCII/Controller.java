@@ -14,10 +14,7 @@ import javafx.event.ActionEvent;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -63,7 +60,6 @@ public class Controller implements Initializable {
 
                 // based on the grayscale, write down an ascii to replace it with
                 writer.write(asciiNate(grayscale));
-                
 
                 writer.flush();
             }
@@ -71,14 +67,35 @@ public class Controller implements Initializable {
         }
         writer.close();
 
+        //Open asciiNated image
+        try
+        {
+            //constructor of file class having file as argument
+            File file = new File("asciiArt.txt");
+            if(!Desktop.isDesktopSupported())//check if Desktop is supported by Platform or not
+            {
+                System.out.println("not supported");
+                return;
+            }
+            Desktop desktop = Desktop.getDesktop();
 
+            //check file exists or not
+            if(file.exists()) {
+                desktop.open(file);   //open the specified file
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 
         //Load new page
-        Parent root = FXMLLoader.load(Main.class.getResource("/ASCII/Scene2.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+//        Parent root = FXMLLoader.load(Main.class.getResource("/ASCII/Scene2.fxml"));
+//        Stage stage2 = new Stage();
+//        Scene scene = new Scene(root);
+//        stage2.setScene(scene);
+//        stage2.setMaximized(true);
+//        stage2.show();
     }
 
     private char asciiNate(double g) {
