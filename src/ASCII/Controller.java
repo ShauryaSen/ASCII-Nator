@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,26 +37,16 @@ public class Controller implements Initializable {
         //Save user input URL
         URL url = new URL(urlField.getText());
 
-        //Open URL in browser
-        /*
-        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-            Desktop.getDesktop().browse(new URI(""+url));
-        }
-         */
-
         // create the file to output to
         Writer writer = new FileWriter("asciiArt.txt");
 
         // Read the image
         try {
-
-            // image = ImageIO.read(new File(String.valueOf(url)));
-            //image = ImageIO.read("C:\\Users\\Shaurya Sen\\Downloads");
             image = ImageIO.read(url);
-
 
         } catch (IOException fx) {
             System.out.println("lul bad");
+
         }
         catch (NullPointerException npx) {
             System.out.println("NullPointerException thrown");
