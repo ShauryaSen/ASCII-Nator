@@ -49,14 +49,15 @@ public class Controller implements Initializable {
         // Read the image
         try {
 
+            // image = ImageIO.read(new File(String.valueOf(url)));
+            //image = ImageIO.read("C:\\Users\\Shaurya Sen\\Downloads");
             image = ImageIO.read(url);
 
-            ImageIO.write(image, "jpg",new File("hi.jpg"));
-
-            image = ImageIO.read(new File(String.valueOf(url)));
 
         } catch (IOException fx) {
-        } catch (NullPointerException npx) {
+            System.out.println("lul bad");
+        }
+        catch (NullPointerException npx) {
             System.out.println("NullPointerException thrown");
         }
 
@@ -71,6 +72,7 @@ public class Controller implements Initializable {
 
                 // based on the grayscale, write down an ascii to replace it with
                 writer.write(asciiNate(grayscale));
+                
 
                 writer.flush();
             }
