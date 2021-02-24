@@ -42,7 +42,7 @@ public class Controller implements Initializable {
             image = ImageIO.read(url);
 
         } catch (IOException fx) {
-            System.out.println("lul bad");
+            System.out.println("IOException (lul bad)");
 
         }
         catch (NullPointerException npx) {
@@ -67,7 +67,7 @@ public class Controller implements Initializable {
         }
         writer.close();
 
-        //Open asciiNated image
+        //Open ascii-Nated image
         try
         {
             //constructor of file class having file as argument
@@ -100,6 +100,12 @@ public class Controller implements Initializable {
 
     private char asciiNate(double g) {
 
+        String map = "#@$/=:. ";
+
+        return map.charAt((int)(map.length() * g / 256.0));
+
+    }
+    /*
         if (g > 230) {
             return ' ';
         } else if (g > 205) {
@@ -118,6 +124,7 @@ public class Controller implements Initializable {
             return '#';
         }
     }
+    */
 
 
     @Override
