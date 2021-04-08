@@ -13,7 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(ASCII.Main.class.getResource("/ASCII/Scene1.fxml"));
         Scene scene1 = new Scene(root);
         stage1.setScene(scene1);
-        stage1.setTitle("Hello World");
+        stage1.setTitle("ASCII-Nator");
         stage1.show();
     }
 

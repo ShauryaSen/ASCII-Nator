@@ -100,12 +100,14 @@ public class Controller implements Initializable {
 
     private char asciiNate(double g) {
 
+        /*
         String map = "#@$/=:. ";
 
-        return map.charAt((int)(map.length() * g / 256.0));
-
+        return map.charAt((int) (map.length() * g / 256.0));
     }
-    /*
+
+         */
+
         if (g > 230) {
             return ' ';
         } else if (g > 205) {
@@ -124,7 +126,10 @@ public class Controller implements Initializable {
             return '#';
         }
     }
-    */
+
+
+
+
 
 
     @Override
